@@ -13,3 +13,9 @@
   max-width: 1000px;
   width: 100%;
 }
+
+h2 {
+  font-size: 36px;
+  line-height: 24px;
+  color: #656565;
+}

@@ -11,15 +11,16 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import { title, html } from './index.md';
+import { title } from './index.md';
 
 class HomePage extends React.Component {
 
   static propTypes = {
-    articles: PropTypes.arrayOf(PropTypes.shape({
+    webpages: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
     }).isRequired).isRequired,
   };
 
@@ -30,19 +31,17 @@ class HomePage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <div
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <h4>Articles</h4>
-        <ul>
-          {this.props.articles.map(article =>
-            <li key={article.url}>
-              <a href={article.url}>{article.title}</a>
-              by {article.author}
-            </li>,
+        <h2>My webpages</h2>
+        <div className={s.grid}>
+          {this.props.webpages.map(webpage =>
+            <div className={s.cell} key={webpage.url}>
+              <a href={webpage.url} className={s.link} style={{ background: `url(${webpage.image}) #fff no-repeat center center` }}>
+                <h3>{webpage.title}</h3>
+                <p>{webpage.description}</p>
+              </a>
+            </div>,
           )}
-        </ul>
+        </div>
         <p>
           <br /><br />
         </p>
