@@ -35,7 +35,7 @@ class HomePage extends React.Component {
         <div className={s.grid}>
           {this.props.webpages.map(webpage =>
             <div className={s.cell} key={webpage.url}>
-              <a href={webpage.url} className={s.link} style={{ background: `url(${webpage.image}) #fff no-repeat center center` }}>
+              <a href={webpage.url} className={s.link} style={{ background: `url(${webpage.image}) #fff no-repeat center center`, backgroundSize: 'cover' }}>
                 <h3>{webpage.title}</h3>
                 <p>{webpage.description}</p>
               </a>

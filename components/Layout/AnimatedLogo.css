@@ -11,7 +11,7 @@
 
 .itenteges {
   position: relative;
-  height: 180px;
+  height: 35vw;
 }
 
 .logo {
@@ -34,6 +34,9 @@
 }
 
 @media screen and (min-width: 500px) {
+    .itenteges {
+      height: 180px;
+    }
     .h1 {
         font-size: 65px;
         top: 60px;
