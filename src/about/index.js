@@ -9,23 +9,32 @@
  */
 
 import React from 'react';
+import browserLocale from 'browser-locale';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import { title, html } from './index.md';
+import englishContent from './index.md';
+import polishContent from './indexPl.md';
 
 class AboutPage extends React.Component {
+  constructor() {
+    super();
+    const locale = browserLocale().replace(/-.+/g, '') || 'en';
+    this.state = {
+      content: locale === 'pl' ? polishContent : englishContent,
+    };
+  }
 
   componentDidMount() {
-    document.title = title;
+    document.title = this.state.content.title;
   }
 
   render() {
     return (
       <Layout className={s.content}>
-        <h1>{title}</h1>
+        <h1>{this.state.content.title}</h1>
         <div
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{ __html: this.state.content.html }}
         />
       </Layout>
     );
