@@ -9,31 +9,44 @@
  */
 
 import React, { PropTypes } from 'react';
+import browserLocale from 'browser-locale';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import { title } from './index.md';
+import englishContent from './index.md';
+import polishContent from './indexPl.md';
 
 class HomePage extends React.Component {
 
   static propTypes = {
-    webpages: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    }).isRequired).isRequired,
+    webpages: PropTypes.objectOf(
+      PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+      }).isRequired).isRequired,
+    ).isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    const locale = browserLocale().replace(/-.+/g, '') || 'en';
+    this.state = {
+      content: locale === 'pl' ? polishContent : englishContent,
+      webpages: this.props.webpages[locale],
+    };
+  }
+
   componentDidMount() {
-    document.title = title;
+    document.title = this.state.content.title;
   }
 
   render() {
     return (
       <Layout className={s.content}>
-        <h2>My webpages</h2>
+        <h2>{this.state.content.h1}</h2>
         <div className={s.grid}>
-          {this.props.webpages.map(webpage =>
+          {this.state.webpages.map(webpage =>
             <div className={s.cell} key={webpage.url}>
               <a href={webpage.url} className={s.link} style={{ background: `url(${webpage.image}) #fff no-repeat center center`, backgroundSize: 'cover' }}>
                 <h3>{webpage.title}</h3>
@@ -42,9 +55,6 @@ class HomePage extends React.Component {
             </div>,
           )}
         </div>
-        <p>
-          <br /><br />
-        </p>
       </Layout>
     );
   }

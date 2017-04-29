@@ -9,16 +9,21 @@
  */
 
 import React from 'react';
+import browserLocale from 'browser-locale';
 import Link from '../Link';
+import englishContent from './index.md';
+import polishContent from './indexPl.md';
 
 function Footer() {
+  const content = browserLocale().replace(/-.+/g, '') === 'pl' ? polishContent : englishContent;
+
   return (
     <footer className="mdl-mini-footer">
       <div className="mdl-mini-footer__left-section">
         <ul className="mdl-mini-footer__link-list">
           <li><Link to="/">© IT&Teges</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><a href="mailto:kontakt@itenteges.pl">Contact</a></li>
+          <li><Link to="/about">{content.about}</Link></li>
+          <li><a href="mailto:kontakt@itenteges.pl">{content.contact}</a></li>
         </ul>
       </div>
       <div className="mdl-mini-footer__right-section">
