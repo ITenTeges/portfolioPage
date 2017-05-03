@@ -4,7 +4,7 @@
     "page": "./home",
     "chunk": "main",
     "data": {
-      "webpages": "GET https://gist.githubusercontent.com/leshek-pawlak/bebaabf6ae1ae970bdf5444339458ab2/raw/d17aaaccea788ad1e91637e1e173d22851524041/webpages.json"
+      "webpages": "GET https://gist.githubusercontent.com/leshek-pawlak/bebaabf6ae1ae970bdf5444339458ab2/raw/2dbd321a4640cd3a99d1f77daeb6fc2fea680864/webpages.json"
     }
   },
   {

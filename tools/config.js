@@ -9,8 +9,8 @@
  */
 
 module.exports = {
-  title: 'React Static Boilerplate',        // Your website title
-  url: 'https://rsb.kriasoft.com',          // Your website URL
-  project: 'react-static-boilerplate',      // Firebase project. See README.md -> How to Deploy
-  trackingID: 'UA-XXXXX-Y',                 // Google Analytics Site's ID
+  title: 'IT&Teges',                    // Your website title
+  url: 'http://itenteges.pl',           // Your website URL
+  project: 'itenteges-portfolio',       // Firebase project. See README.md -> How to Deploy
+  trackingID: 'UA-68989198-8',          // Google Analytics Site's ID
 };
