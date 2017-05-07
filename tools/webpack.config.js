@@ -13,6 +13,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('../package.json');
 
 const isDebug = global.DEBUG === false ? false : !process.argv.includes('--release');
@@ -173,6 +174,7 @@ if (!isDebug) {
     },
   }));
   config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+  config.plugins.push(new CopyWebpackPlugin([{ from: '../*.html' }]));
 }
 
 // Hot Module Replacement (HMR) + React Hot Reload
